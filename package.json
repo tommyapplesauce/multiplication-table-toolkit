@@ -1,0 +1,18 @@
+{
+  "name": "multiplication-table-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A standalone interactive visual web app for discovering multiplication table digit patterns.",
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 4173",
+    "test": "node --test"
+  },
+  "keywords": [
+    "multiplication",
+    "education",
+    "patterns",
+    "web-app"
+  ],
+  "license": "MIT"
+}
