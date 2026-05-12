@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multiplication Table Toolkit — Pattern Playground</title>
+    <meta
+      name="description"
+      content="A child-friendly visual tool for discovering multiplication tables through repeating digit cycles, wraps, and validation."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#playground">Skip to the playground</a>
+    <header class="hero" aria-labelledby="app-title">
+      <div class="hero__text">
+        <p class="eyebrow">Multiplication Table Toolkit</p>
+        <h1 id="app-title">Pattern Playground</h1>
+        <p class="hero__lede">
+          Find the loop, watch the wrap, raise the tens, and build the table.
+        </p>
+      </div>
+      <div class="mascot-card" aria-hidden="true">
+        <span class="mascot-card__face">➕</span>
+        <span>Number Detective</span>
+      </div>
+    </header>
+
+    <main id="playground" class="app-shell">
+      <section class="control-panel" aria-labelledby="choose-table-heading">
+        <div>
+          <p class="section-kicker">Step 1 · Observe</p>
+          <h2 id="choose-table-heading">Choose a table trail</h2>
+          <p>
+            Start by watching the last digit only. The full answer appears after the pattern expands.
+          </p>
+        </div>
+
+        <fieldset class="table-picker" aria-describedby="table-help">
+          <legend>Pick a multiplication table</legend>
+          <p id="table-help" class="sr-only">
+            Choose a number from one through ten to update the digit cycle and challenge.
+          </p>
+          <div id="tableButtons" class="table-picker__buttons"></div>
+        </fieldset>
+      </section>
+
+      <section class="lesson-card" aria-labelledby="lesson-name">
+        <div class="lesson-card__header">
+          <div>
+            <p class="section-kicker">Step 2 · Compress</p>
+            <h2 id="lesson-name">The March of the Twos</h2>
+            <p id="lesson-personality" class="personality">The even-number march</p>
+          </div>
+          <div class="table-badge" aria-live="polite">
+            <span id="activeTable">2</span>s
+          </div>
+        </div>
+
+        <div class="cycle-stage" aria-labelledby="cycle-heading">
+          <h3 id="cycle-heading">Compressed ones-digit loop</h3>
+          <ol id="cycleWheel" class="cycle-wheel" aria-label="Repeating ones-digit cycle"></ol>
+          <p id="hookText" class="hook-text">
+            What if the 2 times table is hiding inside five numbers?
+          </p>
+        </div>
+      </section>
+
+      <section class="challenge-card" aria-labelledby="challenge-heading">
+        <div>
+          <p class="section-kicker">Step 3 · Predict</p>
+          <h2 id="challenge-heading">Next digit detective</h2>
+          <p id="challengePrompt" class="challenge-card__prompt"></p>
+        </div>
+
+        <div id="answerChoices" class="answer-grid" role="group" aria-label="Answer choices"></div>
+
+        <div class="wrap-choice" role="group" aria-labelledby="wrap-question">
+          <p id="wrap-question">Did the ones digit loop back down?</p>
+          <button class="wrap-button" data-wrap-choice="yes" type="button">Yes, raise the tens!</button>
+          <button class="wrap-button" data-wrap-choice="no" type="button">No, keep marching.</button>
+        </div>
+
+        <div class="action-row">
+          <button id="checkAnswer" class="primary-button" type="button">Reveal the pattern</button>
+          <button id="nextChallenge" class="secondary-button" type="button">Next step</button>
+        </div>
+
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+      </section>
+
+      <section class="expansion-card" aria-labelledby="expanded-heading">
+        <div class="expansion-card__intro">
+          <div>
+            <p class="section-kicker">Step 4 · Expand</p>
+            <h2 id="expanded-heading">Build the full table</h2>
+          </div>
+          <p>
+            The ones digit comes from the loop. When it jumps back down, the tens digit steps up.
+          </p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption id="tableCaption">Expanded 2s table through 10 steps</caption>
+            <thead>
+              <tr>
+                <th scope="col">Step</th>
+                <th scope="col">Expression</th>
+                <th scope="col">Tens</th>
+                <th scope="col">Ones</th>
+                <th scope="col">Product</th>
+                <th scope="col">Wrap?</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="validation-card" aria-labelledby="validation-heading">
+        <div>
+          <p class="section-kicker">Step 5 · Validate</p>
+          <h2 id="validation-heading">Check the truth</h2>
+          <p id="validationText"></p>
+        </div>
+        <div id="groupsVisual" class="groups-visual" aria-label="Grouping visual"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Pattern-first learning: observe → predict → build → reveal → validate → reward.</p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
