@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Multiplication Table Toolkit — Locker Pattern Mystery</title>
+    <meta
+      name="description"
+      content="A child-friendly visual locker mystery for discovering multiplication tables through name length, digit cycles, wraps, and validation."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#app">Skip to the interactive mystery</a>
+
+    <header class="hero" aria-labelledby="app-title">
+      <p class="eyebrow">Multiplication Table Toolkit</p>
+      <h1 id="app-title">Locker Pattern Mystery</h1>
+      <p>
+        A name becomes a number. The number opens a locker. The locker reveals a pattern.
+      </p>
+    </header>
+
+    <main id="app" class="app-shell">
+      <section class="controls-card" aria-labelledby="setup-heading">
+        <div>
+          <p class="section-kicker">Setup</p>
+          <h2 id="setup-heading">Choose the hidden name</h2>
+          <p>
+            The app counts the letters, then uses that count as the multiplication table for the mystery.
+          </p>
+        </div>
+
+        <label for="secretName">Hidden name</label>
+        <input id="secretName" maxlength="17" autocomplete="off" />
+
+        <label for="clueText">Blue-ink clues on the paper</label>
+        <textarea id="clueText" rows="4"></textarea>
+
+        <div class="count-pill" aria-live="polite">
+          <span id="nameCount">4 letters</span>
+        </div>
+      </section>
+
+      <section class="scene-card" aria-labelledby="sceneTitle">
+        <div class="scene-toolbar">
+          <div>
+            <p class="section-kicker">Interactive sequence</p>
+            <h2 id="sceneTitle">View 1 · Hallway clue</h2>
+          </div>
+          <nav id="sceneDots" class="scene-dots" aria-label="Scene navigation"></nav>
+        </div>
+
+        <div id="stage" class="stage" data-view="hallway">
+          <img id="sceneBackground" class="scene-background" alt="Current school mystery background" />
+          <div class="fallback-background" aria-hidden="true">
+            <span>School hallway</span>
+          </div>
+
+          <div class="shadow-gradient" aria-hidden="true"></div>
+
+          <div class="speech-box" role="status" aria-live="polite">
+            <p id="speechText">A name is hiding in the hallway. Count its letters first.</p>
+          </div>
+
+          <div class="hand-note" aria-label="Hand holding a clue paper">
+            <img id="handPaper" alt="Hand holding paper asset" />
+            <div class="paper-fallback" aria-hidden="true"></div>
+            <p id="paperClues" class="paper-ink">blue backpack<br />likes patterns<br />name has 4 letters</p>
+          </div>
+
+          <div class="lock-closeup" aria-label="Locker lock closeup">
+            <img id="lockBody" class="lock-body" alt="Lock body asset" />
+            <img id="lockShackle" class="lock-shackle" alt="Lock shackle asset" />
+            <div class="lock-fallback" aria-hidden="true">
+              <span>LOCK</span>
+            </div>
+          </div>
+
+          <div class="keeper-closeup" aria-label="Trapper Keeper dial closeup">
+            <div id="dialTray" class="dial-tray"></div>
+            <div class="keeper-fallback" aria-hidden="true">TRAPPER KEEPER</div>
+          </div>
+
+          <div class="keeper-open-page" aria-label="Open Trapper Keeper paper">
+            <p>The hidden name is</p>
+            <strong id="secretNameDisplay">MILO</strong>
+          </div>
+        </div>
+
+        <div class="scene-actions">
+          <button id="previousScene" class="secondary-button" type="button">Back</button>
+          <button id="sceneAction" class="primary-button" type="button">Count the letters</button>
+        </div>
+      </section>
+
+      <section class="pattern-card" aria-labelledby="pattern-heading">
+        <div class="pattern-card__intro">
+          <div>
+            <p class="section-kicker">Toolkit logic</p>
+            <h2 id="pattern-heading"><span id="activeTable">4s</span> pattern engine</h2>
+          </div>
+          <p id="lessonName">The Double-Two Jumper</p>
+        </div>
+
+        <div class="cycle-strip" aria-label="Compressed ones-digit cycle">
+          <span>Compressed loop</span>
+          <strong id="cycleDigits">4 · 8 · 2 · 6 · 0</strong>
+        </div>
+
+        <p id="patternRule" class="pattern-rule">
+          The name has 4 letters, so this lock practices the 4s. When the ones digit loops back down, the tens digit steps up.
+        </p>
+
+        <ol id="expandedRows" class="expanded-rows" aria-label="Expanded multiplication table"></ol>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Find the loop. Watch the wrap. Raise the tens. Build the table. Check the truth.</p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
